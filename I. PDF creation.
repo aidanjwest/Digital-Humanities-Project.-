@@ -1,0 +1,43 @@
+import string, random, re
+!pip install fpdf
+from fpdf import FPDF 
+
+from itertools import repeat, chain
+!pip install essential_generators
+
+from essential_generators import DocumentGenerator
+
+def underline(s):
+    return ''.join(chain.from_iterable(zip(s, repeat("\u0332"))))
+
+def document_creation(x):
+  gen = DocumentGenerator()
+  model_text = ""
+  sentence_count = 0
+  
+  while sentence_count < x:
+    sentence = str(gen.sentence())
+    
+    if sentence_count % 2 == 0:
+      model_text += sentence  + ""
+      sentence_count += 1
+    else:
+      model_text += sentence.upper() + "" 
+      sentence_count += 1
+
+    else:
+        model_text += sentence.upper() + " "
+        sentence_count += 1
+        
+  model_text = ascii(model_text)
+  re.sub(' +', ' ', model_text)
+
+  def open_close(x):
+  with open(x, "w", encoding = "utf-8) as f:
+      f.write(x)
+  with open(x, "r", encoding = "utf-8") as f:
+       content = f.read()
+       
+       
+ 
+      
