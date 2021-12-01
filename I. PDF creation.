@@ -10,12 +10,12 @@ from essential_generators import DocumentGenerator
 def underline(s):
     return ''.join(chain.from_iterable(zip(s, repeat("\u0332"))))
 
-def document_creation(x):
+def document_creation(size_of_para):
   gen = DocumentGenerator()
   model_text = ""
   sentence_count = 0
   
-  while sentence_count < x:
+  while sentence_count < size_of_para:
     sentence = str(gen.sentence())
     
     if sentence_count % 2 == 0:
